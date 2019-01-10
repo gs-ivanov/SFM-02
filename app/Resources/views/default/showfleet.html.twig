@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    {#{{ dump(app.user) }}#}
+    {#{{ dump(fleets) }}#}
+    {#{{ app.user.dutyId }}#}
+
+    {% if app.user.dutyId is same as(1) %}
+
+        <table border="2" style="alignment: center;">
+            <tr>
+                <th>Fleet Name</th>
+                <th>Details</th>
+                <th>Fleet Superintendant ID</th>
+                <th colspan="3">Options</th>
+            </tr>
+            {% for fleet in fleets %}
+                <tr>
+                    <td>{{ fleet.fleetName }}</td>
+                    <td>{{ fleet.details }}</td>
+                    <td>{{ fleet.dutyId }}</td>
+                    <td><a href="{{ path('edit_fleet',{'id':fleet.id}) }}">Edit Fleet Data</a></td>
+                    <td><a href="{{ path('delete_fleet',{'id':fleet.id}) }}">Delete Fleet Data</a></td>
+                    <td><a href="{{ path('show_ships',{'id':fleet.dutyId}) }}">Show Fleet Ships</a></td>
+                    <td><a href="{{ path('add_new_ship',{'id':fleet.dutyId}) }}">Add a Ship</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+         <h3>Fleet records {{ fleets.fleetName }}</h3>
+        <table border="2" style="alignment: center; border: dashed;">
+            <tr>
+                <th>Fleet Name</th>
+                <th>Details</th>
+                <th>Fleet Superintendant ID</th>
+                <th colspan="2">Options</th>
+            </tr>
+            <tr>
+
+                <td>{{ fleets.fleetName }}</td>
+                <td>{{ fleets.details }}</td>
+                <td>{{ fleets.dutyId }}</td>
+                <td><a href="{{ path('show_ships',{'id':fleets.dutyId}) }}">Show Fleet Ships</a></td>
+            </tr>
+        </table>
+    {% endif %}
+
+{% endblock %}

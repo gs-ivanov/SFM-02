@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>Are you sure to DELETE Fleet: {{ fleet.fleetName }}</h3>
+    <h5>Description: {{ fleet.details }}</h5>
+    <table border="0">
+        <tr>
+            <td>
+                <form action="{{ path('confirmdelete',{'id':fleet.id}) }}">
+                    <input type="submit" value="OK">
+                </form>
+            </td>
+            <td>
+                <form action="{{ path('homepage') }}">
+                    <input type="submit" value="Cancel">
+                </form>
+            </td>
+        </tr>
+    </table>
+
+
+{% endblock %}
+

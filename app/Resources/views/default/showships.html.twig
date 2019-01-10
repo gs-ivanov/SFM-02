@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    {#{{ dump(app.user) }}#}
+    {#<h3>Hello, {{ dump(ships) }}</h3>#}
+    {#{% if ships|length >1 %}#}
+    {#<h1>I am the BOSS!!</h1>#}
+    <table border="0" style="alignment: center">
+        <tr>
+            <th>Ship Name</th>
+            <th>Details</th>
+            <th>Fleet Superintendant ID</th>
+            <th colspan="3">Options</th>
+        </tr>
+        {% if ships|length is same as(1) %}
+            <tr>
+                <td>{{ ships.shipName }}</td>
+                <td>{{ ships.email }}</td>
+                <td>{{ ships.dutyId }}</td>
+                {#<td><a href="{{ path('edit_ship',{'id':ship.id}) }}">Edit</a> </td><td><a href="{{ path('delete_ship',{'id':ship.id}) }}">Delete</a> </td>#}
+                {#<td><a href="{{ path('show_ships',{'id':ship.id}) }}">Show Fleet Ships</a> </td>#}
+            </tr>
+        {% else %}
+            {% for ship in ships %}
+                <tr>
+                    <td>{{ ship.shipName }}</td>
+                    <td>{{ ship.email }}</td>
+                    <td>{{ ship.dutyId }}</td>
+                    {#<td><a href="{{ path('edit_ship',{'id':ship.id}) }}">Edit</a> </td><td><a href="{{ path('delete_ship',{'id':ship.id}) }}">Delete</a> </td>#}
+                    {#<td><a href="{{ path('show_ships',{'id':ship.id}) }}">Show Fleet Ships</a> </td>#}
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+    {#{% else %}#}
+    {#<h3>Fleet records {{ ships.shipName }}</h3>#}
+    {#<table border="2" style="alignment: center; border: dashed;">#}
+    {#<tr>#}
+    {#<th>Fleet Name</th> <th>Flagman ship</th><th>Details</th><th>Fleet Manager ID</th><th>Fleet Superintendant ID</th><th colspan="2">Options</th>#}
+
+    {#</tr>#}
+    {#{% for ship in ships %}#}
+    {#<tr>#}
+    {#<h1>{{ ship.id }}</h1>#}
+    {#<td>{{ ships.shipName }}</td> <td>{{ ships.flagman }}</td><td>{{ ships.details }}</td><td>{{ ships.managerId }}</td><td>{{ ships.officerId }}</td><td>Edit</td>#}
+    {#<td><a href="{{ path('add_new_ship',{'id':ships.id}) }}">Show Fleet Ships</a> </td>#}
+    {#</tr>#}
+    {#{% endfor %}#}
+    {#</table>#}
+    {#{% endif %}#}
+
+{% endblock %}

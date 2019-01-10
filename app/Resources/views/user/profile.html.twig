@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    {#{{ dump(user) }}#}
+    <table style="text-align: center" border="2" align="center">
+        <tr>
+            <th>Ship Name</th>
+            <th>Ship Type</th>
+            <th>User ID</th>
+            <th>User Position</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th colspan="3">Options</th>
+        </tr>
+        {% for value in user %}
+
+            {#{% for usr in user %}#}
+            <tr>
+                <td>{{ value.shipName }}</td>
+                <td>{{ value.shipType }}</td>
+                <td>{{ value.dutyId }}</td>
+                <td>{{ value.position }}</td>
+                <td>{{ value.username }}</td>
+                <td>{{ value.email }}</td>
+                <td><a href="{{ path('delete_profile',{'id':value.dutyId}) }}">Delete</a></td>
+                <td><a href="{{ path('user_profile') }}">Send Msg</a></td>
+                <td><a href="{{ path('user_profile') }}">View Msges</a></td>
+            </tr>
+            {#{% endfor %}#}
+        {% else %}
+            <tr>
+                <td>{{ user.shipName }}</td>
+                <td>{{ user.shipType }}</td>
+                <td>{{ user.dutyId }}</td>
+                <td>{{ user.position }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td></td>
+                <td><a href="{{ path('user_profile') }}">Send Msg</a></td>
+                <td><a href="{{ path('user_profile') }}">View Msges</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% if app.user.dutyId is same as(1) %}
+        <a href="{{ path('new_user_register') }}">Add New Ship</a>
+    {% endif %}
+    {#{% for val in user %}#}
+    {#{% if val.dutyId is same as(1) %}#}
+    {#<h1>I am the BOSS!!</h1>#}
+    {#<table border="2" style="alignment: center; border: dashed;">#}
+    {#<tr>#}
+    {#<th>Manager ID</th>#}
+    {#<th>User Name</th>#}
+    {#<th>Email</th>#}
+    {#<th>Responsibility</th>#}
+    {#<th>Options</th>#}
+    {#</tr>#}
+    {#{% for usr in user %}#}
+    {#<tr>#}
+    {#<td>{{ usr.dutyId }}</td>#}
+    {#<td>{{ usr.username }}</td>#}
+    {#<td>{{ usr.email }}</td>#}
+    {#<td>{{ usr.duties }}</td>#}
+    {#<td>Edit</td>#}
+    {#<td><a href="{{ path('delete_profile',{'id':usr.dutyId}) }}">Delete EEEEEEEEE</a></td>#}
+    {#</tr>#}
+    {#{% endfor %}#}
+    {#</table>#}
+    {#{% else %}#}
+    {#<h3>Your data records</h3>#}
+    {#<table border="2" style="alignment: center; border: dashed;">#}
+    {#<tr>#}
+    {#<th>Manager ID</th>#}
+    {#<th>Position</th>#}
+    {#<th>Email</th>#}
+    {#<th>Responsibility</th>#}
+    {#</tr>#}
+    {#{% for usr in user %}#}
+    {#<tr>#}
+    {#<td>{{ usr.dutyId }}</td>#}
+    {#<td>{{ usr.username }}</td>#}
+    {#<td>{{ usr.email }}</td>#}
+    {#<td>{{ usr.duties }}</td>#}
+    {#<td>{{ user.dutyId }}</td> <td>{{ user.username }}</td><td>{{ user.email }}</td><td>{{ user.duties }}</td>#}
+    {#</tr>#}
+    {#{% endfor %}#}
+    {#</table>#}
+    {#{% endif %}#}
+    {#{% endfor %}#}
+{% endblock %}
